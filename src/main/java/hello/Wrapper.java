@@ -22,11 +22,9 @@ abstract class Wrapper<T> {
 @JsonSerialize(as = PersonName.class)
 @JsonDeserialize(as = PersonName.class)
 abstract class _PersonName extends Wrapper<String> {
-    @Value.Check
-    protected void check() {
-        if (value().length() < 3) {
-            throw new IllegalStateException("less than 3 characters");
-        }
-    }
 
+    @Override
+    public String toString() {
+        return value();
+    }
 }
